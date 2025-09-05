@@ -1,0 +1,102 @@
+<div class="dashboard-container">
+  <h1>📁 Project Management</h1>
+
+  <div class="card-grid">
+    <div class="card">
+      <%= link_to projects_path do %>
+        <div class="card-content">
+          <div class="icon">📂</div>
+          <div class="label">Projects</div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card">
+      <%= link_to managers_path do %>
+        <div class="card-content">
+          <div class="icon">👤</div>
+          <div class="label">Managers</div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card">
+      <%= link_to members_path do %>
+        <div class="card-content">
+          <div class="icon">👥</div>
+          <div class="label">Members</div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card">
+      <%= link_to sites_path do %>
+        <div class="card-content">
+          <div class="icon">🏗️</div>
+          <div class="label">Sites</div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dashboard-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background-color: #ffffff;
+    border: 2px solid #0077cc;
+    border-radius: 10px;
+    padding: 30px 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .card:hover {
+    background-color: #0077cc;
+    color: #fff;
+  }
+
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .icon {
+    font-size: 2.5em;
+  }
+
+  .label {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+</style>
+	

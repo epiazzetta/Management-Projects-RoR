@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Project Management" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      .sidebar {
+        min-height: 100vh;
+        width: 240px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #f8f9fa;
+        padding-top: 56px; /* altura da navbar */
+        border-right: 1px solid #ddd;
+      }
+
+      .sidebar .nav-link {
+        padding: 12px 20px;
+      }
+
+      .main-content {
+        margin-left: 240px;
+        padding: 20px;
+        padding-top: 76px;
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+
+        .main-content {
+          margin-left: 0;
+          padding-top: 76px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="/">PM App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <nav class="nav flex-column">
+        <%= link_to "Dashboard", root_path, class: "nav-link" %>
+        <%= link_to "Projects", projects_path, class: "nav-link" %>
+        <%= link_to "Members", members_path, class: "nav-link" %>
+        <%= link_to "Managers", managers_path, class: "nav-link" %>
+        <%= link_to "Sites", sites_path, class: "nav-link" %>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <% if notice.present? %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= notice %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      <% end %>
+
+      <% if alert.present? %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= alert %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

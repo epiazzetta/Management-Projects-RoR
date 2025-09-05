@@ -1,0 +1,13 @@
+<%= form_with(model: site, local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :site_url, class: "form-label" %>
+    <%= form.url_field :site_url, class: "form-control" %>
+  </div>
+
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

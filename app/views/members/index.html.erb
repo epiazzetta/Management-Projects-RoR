@@ -1,0 +1,32 @@
+<% content_for :title, "Members" %>
+
+<div class="container my-5">
+  <h1 class="mb-4 text-center fw-bold">
+    <i class="bi bi-people-fill"></i> Members
+  </h1>
+
+  <div class="d-flex justify-content-end mb-4">
+    <%= link_to "➕ New Member", new_member_path, class: "btn btn-success shadow" %>
+  </div>
+
+  <% if @members.any? %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% @members.each do |member| %>
+        <%= render partial: "shared/card", locals: {
+          title: member.name || "Sem nome",
+          subtitle: member.email || "Sem email",
+          description: "Criado em: #{member.created_at.strftime('%d/%m/%Y')}",
+          view_path: member_path(member),
+          edit_path: edit_member_path(member),
+          delete_path: member_path(member)
+        } %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-info text-center mt-5">
+      Nenhum membro encontrado.
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New member", new_member_path %>

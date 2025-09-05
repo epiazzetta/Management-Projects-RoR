@@ -1,0 +1,20 @@
+<% content_for :title, "Project Details" %>
+
+<div class="container my-5">
+  <%= render partial: "shared/card", locals: {
+    title: @project.description.truncate(50),
+    subtitle: "ID: #{@project.id}",
+    description: "Criado em: #{@project.created_at.strftime('%d/%m/%Y')}",
+    view_path: "#",
+    edit_path: edit_project_path(@project),
+    delete_path: project_path(@project)
+  } %>
+
+  <div class="mt-3">
+    <%= link_to "← Voltar", projects_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
+
+
+
+

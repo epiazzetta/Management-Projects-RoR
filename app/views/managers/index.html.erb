@@ -1,0 +1,41 @@
+<div class="alert alert-primary text-center">
+  Bootstrap está funcionando! 🎉
+</div>
+
+<% content_for :title, "Managers" %>
+
+<% if notice.present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<div class="container my-5">
+  <h1 class="mb-4 text-center fw-bold">
+    <i class="bi bi-person-badge"></i> Managers
+  </h1>
+
+  <div class="d-flex justify-content-end mb-4">
+    <%= link_to "➕ New Manager", new_manager_path, class: "btn btn-primary shadow" %>
+  </div>
+
+  <% if @managers.any? %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% @managers.each do |manager| %>
+        <%= render partial: "shared/card", locals: {
+          title: manager.name,
+          subtitle: manager.email,
+          description: "Criado em: #{manager.created_at.strftime('%d/%m/%Y')}",
+          view_path: manager_path(manager),
+          edit_path: edit_manager_path(manager),
+          delete_path: manager_path(manager)
+        } %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-info text-center mt-5">
+      Nenhum manager encontrado.
+    </div>
+  <% end %>
+</div>

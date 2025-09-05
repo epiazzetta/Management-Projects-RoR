@@ -1,0 +1,33 @@
+<%= form_with(model: manager, local: true) do |form| %>
+  <% if manager.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">
+        <%= pluralize(manager.errors.count, "error") %> prohibited this manager from being saved:
+      </h4>
+      <ul>
+        <% manager.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>Manager Information</legend>
+
+    <div class="mb-3">
+      <%= form.label :name, "Full Name", class: "form-label", for: "manager_name" %>
+      <%= form.text_field :name, id: "manager_name", class: "form-control", placeholder: "Enter full name" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :email, "Email Address", class: "form-label", for: "manager_email" %>
+      <%= form.email_field :email, id: "manager_email", class: "form-control", placeholder: "e.g. manager@example.com" %>
+    </div>
+  </fieldset>
+
+  <div class="d-flex justify-content-between">
+    <%= form.submit "Save Manager", class: "btn btn-primary" %>
+    <%= link_to "Cancel", managers_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>
