@@ -1,0 +1,23 @@
+/*_card.html.erb*/
+
+<div class="col">
+  <div class="card h-100 border-0 shadow-sm rounded-4">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold">
+        <i class="bi bi-person-circle me-2"></i>
+        <%= title %>
+      </h5>
+      <p class="card-text text-muted mb-1">
+        📧 <strong>Email:</strong> <%= subtitle %>
+      </p>
+      <p class="card-text text-muted">
+        <%= description %>
+      </p>
+    </div>
+    <div class="card-footer bg-white border-0 d-flex justify-content-between flex-wrap">
+      <%= link_to "🔍 View", view_path, class: "btn btn-outline-primary btn-sm mb-1" %>
+      <%= link_to "✏️ Edit", edit_path, class: "btn btn-outline-warning btn-sm mb-1" %>
+      <%= link_to "❌ Delete", delete_path, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-outline-danger btn-sm mb-1" %>
+    </div>
+  </div>
+</div>

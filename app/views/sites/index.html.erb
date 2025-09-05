@@ -1,0 +1,33 @@
+<% content_for :title, "Sites" %>
+
+<div class="container my-5">
+  <h1 class="mb-4 text-center fw-bold">
+    <i class="bi bi-globe2"></i> Sites
+  </h1>
+
+  <div class="d-flex justify-content-end mb-4">
+    <%= link_to "➕ New Site", new_site_path, class: "btn btn-success shadow" %>
+  </div>
+
+  <% if @sites.any? %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% @sites.each do |site| %>
+        <%= render partial: "shared/card", locals: {
+          title: site.name || "Sem nome",
+          subtitle: site.site_url || "Sem URL",
+          description: "Criado em: #{site.created_at.strftime('%d/%m/%Y')}",
+          view_path: site_path(site),
+          edit_path: edit_site_path(site),
+          delete_path: site_path(site)
+        } %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-info text-center mt-5">
+      Nenhum site encontrado.
+    </div>
+  <% end %>
+</div>
+
+
+<%= link_to "New site", new_site_path %>

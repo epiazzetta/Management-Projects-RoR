@@ -1,0 +1,22 @@
+<% content_for :title, "Editing Manager" %>
+
+<div class="container my-4">
+
+  <h1 class="mb-4">Editing Manager</h1>
+
+  <!-- Form in a card -->
+  <div class="card mb-5">
+    <div class="card-body">
+      <%= render "form", manager: @manager %>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <%= link_to "Show this Manager", @manager, class: "btn btn-outline-primary me-md-2" %>
+    <%= link_to "Back to Managers", managers_path, class: "btn btn-outline-secondary me-md-2" %>
+    <%= link_to "Home", root_path, class: "btn btn-outline-info" %>
+  </div>
+
+</div>
+
