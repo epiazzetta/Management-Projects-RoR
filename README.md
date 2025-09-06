@@ -1,3 +1,5 @@
+⚠️ Este projeto usa variáveis de ambiente e um arquivo de credenciais (`config/master.key`) que **não está incluso** no repositório. 
+Certifique-se de configurar isso localmente.
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +24,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
